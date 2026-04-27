@@ -434,8 +434,13 @@ Main() {
         INFO "default mirrorlist file is now '$target_def'."
     fi
     local target="$target_def"
-    local mirrordata="${progname}-active-mirrors-arch.conf"                # support file: active Arch mirrors in various countries
-    local cc_vs_name_file="${progname}-country-mapping-arch.conf"          # support file: mappings between country-code and country-name
+    if [ -w . ] ; then
+        local mirrordata="${progname}-active-mirrors-arch.conf"                # support file: active Arch mirrors in various countries
+        local cc_vs_name_file="${progname}-country-mapping-arch.conf"          # support file: mappings between country-code and country-name
+    else
+        local mirrordata="$HOME/.${progname}-active-mirrors-arch.conf"                # support file: active Arch mirrors in various countries
+        local cc_vs_name_file="$HOME/.${progname}-country-mapping-arch.conf"          # support file: mappings between country-code and country-name
+    fi
     local has_internet_connection=yes
     local country_code=""
     local fake_country=""

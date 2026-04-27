@@ -15,7 +15,7 @@ source=(
     create-ml-country-mapping-arch.conf
     create-ml-active-mirrors-arch.conf
 )
-sha256sums=('40f0c26ef63c8f30c2f53dff3bafa9c985803fb478b252ed8b05283b49579f56'
+sha256sums=('002a55435beacd91ba8f23a3b60cad0500bfe13968e3bddcb493a8691acbdc3c'
             'eb12dd481752d0d1a6d95c312c3489b5dd98a2a7baf3ab3175240d2150659418'
             'f5fb14988ee5f9e50ea87fc9d6b0e7f4ac9c3e393b21287939448b28a8f9a047'
             '2fdf3da12953908c9ab9b547fa678b956644bbcece57ba69f58e7549f8a0232f'
