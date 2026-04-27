@@ -427,8 +427,13 @@ Main() {
     OPTS+=",use-saved-cc,timeout-mirror:,countries:${sep}c:,show-failed"
 
     local -r user_fav_countries=$HOME/user-countries.txt
-    local -r target_def=/etc/pacman.d/mirrorlist
-    local target=$target_def
+    local target_def=/etc/pacman.d/mirrorlist
+    if [ -L "$target_def" ] ; then
+        target_def=$(/bin/ls -l "$target_def" | awk '{print $NF}')         # /etc/pacman.d/mirrorlist is symlink, so update the target, not the link name
+        [ "$target_def" ] || DIE "symlink target of /etc/pacman.d/mirrorlist was not found."
+        INFO "default mirrorlist file is now '$target_def'."
+    fi
+    local target="$target_def"
     local mirrordata="${progname}-active-mirrors-arch.conf"                # support file: active Arch mirrors in various countries
     local cc_vs_name_file="${progname}-country-mapping-arch.conf"          # support file: mappings between country-code and country-name
     local has_internet_connection=yes
